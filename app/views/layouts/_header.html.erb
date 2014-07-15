@@ -1,0 +1,24 @@
+<div class="navbar navbar-static">
+    <div class="navbar-inner">
+        <a href="#" class="brand">Airbnb</a>
+
+        <ul class="nav">
+            <%if current_user%>
+                <li> <%= link_to 'Home', root_path %></li>
+                <li> <%= link_to 'Profile', account_url %></li>
+                <li> <%= link_to 'Logout', logout_url %></li>
+           
+           <%else%>
+                <li> <%= link_to 'Home', root_path %></li>
+                <li> <%= link_to 'Sign Up',  new_account_url%></li>
+                <li> <%= link_to 'Login', login_url %></li>
+           <%end%>
+
+        </ul>
+       <form class="navbar-form pull-right">
+            <input type="text" class="input-medium">
+            <button class="btn" type="submit">Submit</button>
+        </form>
+
+    </div>
+</div>
