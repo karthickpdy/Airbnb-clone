@@ -30,60 +30,16 @@ class BookingsController < ApplicationController
   def create
     
     handle_redirection Booking.create_bookings params,current_user
-   #  from=combine_date params[:booking],"from"
-   #  to=combine_date params[:booking],"to"
-   #  pr=Property.find(params[:booking][:property_id])
-    
-   #  avail=date_avail?(pr,from,to) && accomodate_guests?(pr,params[:booking][:no_guest])
    
-   # if avail  
-   
-   #    @booking = current_user.bookings.build(params[:booking])
-
-   #      if @booking.save
-   #        redirect_to(@booking, :id=>@booking.id) 
-          
-   #      else
-   #         render :action => "new" 
-          
-   #      end
-
-   #  else
-
-
-   #    redirect_to (new_booking_url(:propid=>params[:booking][:property_id]))
-   #  end
-  
   end
 
   # PUT /bookings/1
   # PUT /bookings/1.xml
   def update
-     from=combine_date params[:booking],"from"
-    to=combine_date params[:booking],"to"
-    pr=Property.find(params[:booking][:property_id])
-    
-    avail=date_avail?(pr,from,to) && accomodate_guests?(pr,params[:booking][:no_guest])
+
+
+     handle_redirection Booking.update_bookings params,current_user
    
-   if avail  
-   
-    @booking = Booking.find(params[:id])
-
-      if @booking.update_attributes(params[:booking])
-         redirect_to(@booking, :id=>@booking.id) 
-        
-      else
-         render :action => "edit" 
-        
-      
-      end
-
-    else
-
-
-      redirect_to (new_booking_url(:propid=>params[:booking][:property_id]))
-    end
-  
   end
 
   # DELETE /bookings/1
@@ -91,8 +47,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-
-       redirect_to(bookings_url) 
+    redirect_to(bookings_url) 
       
     
   end

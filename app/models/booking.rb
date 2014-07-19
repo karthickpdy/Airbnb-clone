@@ -41,26 +41,78 @@ def self.create_bookings(params,current_user)
       @booking = current_user.bookings.build(params[:booking])
 
         if @booking.save
-         Rails.logger.debug("herer in create_bookings")
+        
 
         	result[:redirect]="/bookings/#{@booking.id}"
-
+          result[:class]="alert alert-success"
+          result[:message]="Booking done successfully"
           # redirect_to(@booking, :id=>@booking.id) 
           
         else
 
         	result[:redirect] ="/bookings/new?propid=#{pr.id}"
+          result[:class]="alert alert-error"
+          result[:message]='Err..There was an issue in creating...'+@booking.errors.full_messages.to_sentence
+          
           
         end
 
     else
 		result[:redirect] ="/bookings/new?propid=#{pr.id}"
-		
+		result[:class]="alert alert-error"
+    result[:message]='Err..There was an issue in creating...'+@booking.errors.full_messages.to_sentence
+          
     end
   
 return result
 
 end
+
+
+
+
+def self.update_bookings(params,current_user)
+
+result={}
+
+     from=combine_date params[:booking],"from"
+    to=combine_date params[:booking],"to"
+    pr=Property.find(params[:booking][:property_id])
+    
+    avail=date_avail?(pr,from,to) && accomodate_guests?(pr,params[:booking][:no_guest])
+    @booking = Booking.find(params[:id])
+   if avail  
+   
+   
+
+      if @booking.update_attributes(params[:booking])
+
+          result[:redirect]="/bookings/#{@booking.id}"
+          result[:class]="alert alert-success"
+          result[:message]="Booking updated successfully"
+        
+        
+      else
+
+          result[:redirect] ="/bookings/#{@booking.id}/edit"
+          result[:class]="alert alert-error"
+          result[:message]='Err..There was an issue in creating...'+@booking.errors.full_messages.to_sentence
+         
+         
+      end
+
+    else
+
+
+          result[:redirect] ="/bookings/#{@booking.id}/edit"
+          result[:class]="alert alert-error"
+          result[:message]='Err..There was an issue in creating...'+@booking.errors.full_messages.to_sentence
+        
+    end
+    return result
+  
+end
+
 
 	belongs_to :user
 end

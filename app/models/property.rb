@@ -17,6 +17,9 @@ class Property < ActiveRecord::Base
 	named_scope :favail_to, lambda { |avail_to| 
       {:conditions => ['avail_to >= ?', avail_to]} if(avail_to.present?)};
 
+named_scope :not_current_user, lambda { |user_id| 
+      {:conditions => ['user_id <> ?', user_id]} if(user_id.present?)};
+
 
 
 
@@ -26,8 +29,8 @@ class Property < ActiveRecord::Base
     end
  end
 
-def self.return_search_result(params)
-	Property.fcity(params[:city]).fguest(params[:guest]).favail_from(params[:from]).favail_to(params[:to])
+def self.return_search_result(params,current_user)
+	Property.not_current_user(current_user.id).fcity(params[:city]).fguest(params[:guest]).favail_from(params[:from]).favail_to(params[:to])
 end
 
 
@@ -36,7 +39,7 @@ def self.index_result(params,current_user)
  	if(params[:mylisting])
       current_user.properties
     else
-     Property.find(:all,:conditions=>["user_id <> ?",current_user.id])
+     Property.not_current_user(current_user.id)
     end   
 end
 
@@ -48,15 +51,15 @@ def self.create_properties(params,current_user)
 
       if @property.save
 
-      	result[:message] = 'Property was successfully created.'
+      	result[:message] = 'Listing was successfully created.'
         result[:class]="alert-success alert"
         result[:redirect]=(@property) 
         
       else
 
 
-      	result[:message] = 'Property was successfully created.'
-        result[:class]="alert"
+      	result[:message] = 'Err..There was an issue in creating...'+@property.errors.full_messages.to_sentence
+        result[:class]="alert-error alert"
         result[:redirect]="/properties/new"
         
 
@@ -79,8 +82,8 @@ def self.update_properties(params,current_user)
         
       else
 
-      	result[:message] = 'Property was successfully updated.'
-        result[:class]="alert-success alert"
+      	result[:message] = 'Err..There was an issue in creating...'+@property.errors.full_messages.to_sentence
+        result[:class]="alert-error alert"
         render :action => "edit"  
       end
     

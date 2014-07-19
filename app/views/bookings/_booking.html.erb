@@ -6,4 +6,7 @@
 	<td><%=booking.from%></td>
 	<td><%=booking.to%></td>
 	<td><%=booking.no_guest%></td>
+	<td><%= link_to 'Edit', edit_booking_path(booking) %></td>
+    <td><%= link_to 'Destroy', booking, :confirm => 'Are you sure?', :method => :delete %></td>
+  
 </tr>

@@ -44,6 +44,7 @@ class ApplicationController < ActionController::Base
 
     def handle_redirection(result)
 
+      flash[result[:class]]=result[:message]
        redirect_to result[:redirect]
     
     end

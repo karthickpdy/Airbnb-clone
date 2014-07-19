@@ -9,23 +9,13 @@
 		<th>From </th>
 		<th>To </th>
 		<th>Guests</th>
+		<th>Edit </th>
+		<th>Destroy</th>
 	</tr>
 <%=render @bookings%>
 
 </table>
 
-<table>
-  <tr>
-  </tr>
-
-<% @bookings.each do |booking| %>
-  <tr>
-    <td><%= link_to 'Show', booking %></td>
-    <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
-    <td><%= link_to 'Destroy', booking, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
 
 <br />
 <%else%>

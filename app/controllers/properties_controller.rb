@@ -7,7 +7,7 @@ class PropertiesController < ApplicationController
   end
 
   def search
-     @properties =Property.return_search_result(params);
+     @properties =Property.return_search_result(params,current_user);
   end
 
   def show
