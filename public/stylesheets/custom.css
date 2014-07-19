@@ -1,9 +1,45 @@
-.form-horizontal .controls{
-	margin-left:30px;
+.form-horizontal .controls {
+	margin-left: 30px;
 }
-
-.login{
-
-
+.login {
 	margin-left: 200px;
+}
+#demo {
+	min-height: 0px;
+}
+#demo input {
+	margin-bottom: 0px;
+}
+#demo button {
+	margin-top: 1px;
+}
+.glyphicon {
+	margin-bottom: 10px;
+	margin-right: 10px;
+}
+small {
+	display: block;
+	line-height: 1.428571429;
+	color: #999;
+}
+.trans {
+	background-color: rgba(255, 255, 255, 0.46);
+	min-height: 50px;
+	/* margin: auto auto;
+	*/
+	position: absolute;
+	top: 44%;
+	left: 35%;
+	display: inline-block;
+	padding: 10px 10px;
+}
+.trans p {
+	font-weight: bold;
+	font-style: italic;
+}
+#awesome {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -10
 }

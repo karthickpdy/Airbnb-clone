@@ -9,7 +9,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140715071426) do
+ActiveRecord::Schema.define(:version => 20140717075239) do
+
+  create_table "bookings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "property_id"
+    t.date     "from"
+    t.date     "to"
+    t.integer  "no_guest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "properties", :force => true do |t|
+    t.string   "name"
+    t.string   "roomtype"
+    t.float    "price"
+    t.string   "city"
+    t.string   "address"
+    t.integer  "guest"
+    t.date     "avail_from"
+    t.date     "avail_to"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "housetype"
+    t.integer  "user_id"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "username"
@@ -19,6 +44,8 @@ ActiveRecord::Schema.define(:version => 20140715071426) do
     t.string   "persistence_token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "phone"
+    t.string   "gender"
   end
 
 end

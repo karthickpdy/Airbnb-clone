@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  # helper :all # include all helpers, all the time
   protect_from_forgery 
   filter_parameter_logging :password, :password_confirmation 
   helper_method :current_user_session, :current_user
@@ -14,10 +15,9 @@ class ApplicationController < ActionController::Base
     end
 
     def require_user
-      logger.debug "ApplicationController::require_user"
       unless current_user
         store_location
-        flash[:notice] = "You must be logged in to access this page"
+        
         redirect_to new_user_session_url
         return false
       end
@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
       logger.debug "ApplicationController::require_no_user"
       if current_user
         store_location
-        flash[:notice] = "You must be logged out to access this page"
+        
        # redirect_to home_index_path
         return false
       end
@@ -40,6 +40,12 @@ class ApplicationController < ActionController::Base
     def redirect_back_or_default(default)
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
+    end
+
+    def handle_redirection(result)
+
+       redirect_to result[:redirect]
+    
     end
 
 end

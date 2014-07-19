@@ -1,5 +1,38 @@
-<p>
-<b>Email:</b>
-<%=h @user.email %>
-</p>
-<%= link_to 'Edit Account', edit_account_path %>
+<div class="row">
+		<div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+    	 <div class="well profile">
+            <div class="col-sm-12">
+                <div class="span3">
+                    <h2><%=@user.username%></h2>
+                    <p><strong>Email: </strong> <%=@user.email %></p>
+                    <p><strong>Phone: </strong>
+                    <%=@user.phone%></p>
+
+
+                    <p><strong>Gender: </strong>
+                    <%=@user.gender%></p>
+
+                    <p>
+                    <%=link_to '<i class="icon-edit"></i>',edit_users_path,class:"btn btn-warning"%>
+               
+            </p>
+                    
+                </div>     
+
+                   <div class="span4">
+
+                   	<h4>Properties Owned</h4>
+                   	<%prop=@user.properties%>
+                   	<% prop.each do |p|%>
+                   	<%=link_to p.name , property_path(:id=>p.id)%><br/>
+                   	<%end%>
+             		</div>        
+                <div class="col-xs-12 col-sm-4 text-center">
+                    <figure>
+                        <img src="http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png" alt="" class="img-circle img-responsive">
+               </div>
+            </div>   
+        </div>
+    </div>
+</div>
+

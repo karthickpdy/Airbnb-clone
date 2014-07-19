@@ -28,6 +28,7 @@ Rails::Initializer.run do |config|
   # you must remove the Active Record framework.
   # config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
   config.gem "authlogic", :version => '2.1.6'
+  # config.gem "paperclip", :version => "2.4"
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 

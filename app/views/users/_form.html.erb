@@ -1,18 +1,32 @@
 
-<p>
-<%= form.label :username %><br />
-<%= form.text_field :username %>
-</p>
-<p>
-<%= form.label :email %><br />
-<%= form.text_field :email %>
-</p>
-<p>
-<%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
-<%= form.password_field :password %>
-</p>
-<p>
-<%= form.label :password_confirmation %><br />
-<%= form.password_field :password_confirmation %>
-</p>
+<div class="control-group">
+	<%= form.label :username ,"", :class =>"control-label" %>
+<%= form.text_field :username,:class =>"controls" %>
+</div>
+<div class="control-group">
+	<%= form.label :email,"", :class =>"control-label"  %>
+<%= form.text_field :email,:class =>"controls" %>
+</div>
+<div class="control-group">
+	<%= form.label :password, form.object.new_record? ? nil : "Change password", :class =>"control-label"  %>
+<%= form.password_field :password,:class =>"controls" %>
+</div>
+<div class="control-group">
+	<%= form.label :password_confirmation,"", :class =>"control-label"  %>
+<%= form.password_field :password_confirmation ,:class =>"controls"%>
+</div>
 
+
+<div class="control-row">
+	<%= form.label :gender  %>
+<%= radio_button_tag(:gender, "M") %>
+<%= label_tag(:gender, "Male",:style =>"display:inline;margin-left:5px;margin-right:5px" ) %>
+<%= radio_button_tag(:gender, "F") %>
+<%= label_tag(:gender, "Female",:style =>"display:inline;margin-left:5px;margin-right:5px") %>
+</div>
+<br/>
+
+<div class="control-group">
+	<%= form.label :phone,"", :class =>"control-label"  %>
+<%= form.text_field :phone,:class =>"controls" %>
+</div>

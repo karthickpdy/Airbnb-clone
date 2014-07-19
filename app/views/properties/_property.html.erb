@@ -1,0 +1,44 @@
+            <div class="well well-sm span5">
+                <div class="row">
+                    <div class="span2">
+                        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="span3">
+                        <h4>
+                           <%=link_to property.name,property_url(:id=>property.id) %></h4>
+                        <small><cite title="San Francisco, USA"><i class="icon-map-marker">
+                        </i><%=property.city%> </cite></small>
+                        <p>&#8377; <%=property.price%><br />
+                            <i class="icon-home"></i><%=property.housetype%> , <%=property.roomtype%> 
+                            <br />
+                           <i class="icon-user"></i><%=property.guest==16?"15+": property.guest%> 
+                            <br />
+            
+                             <i class="icon-envelope"></i><%=property.address%>
+
+                            <br/>
+                             Owner : <%=link_to User.find(property.user_id).username ,account_url(:id =>property.user_id)%>
+
+                             <br/>
+                             <%if(property.user_id==current_user.id)%>
+                             <br/>
+                            <%= link_to 'Edit', edit_property_path(property) %>
+                            <br/>
+                            <%= link_to 'Destroy', property, :confirm => 'Are you sure?', :method => :delete %>
+                              <%else%>
+                            <%=button_to 'Book',new_booking_url(:propid => property.id) ,:class => "btn btn-primary"%>
+                            
+
+
+
+                              <%end%>
+
+
+                              </p>
+
+
+                        <!-- Split button -->
+                     </div>
+                </div>
+            </div>
+        

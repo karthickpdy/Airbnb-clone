@@ -1,0 +1,18 @@
+<%=render 'property'%>
+<div class="clearfix"></div>
+						<h3 class="panel-title">Reservations</h3>
+	
+<table class="table table-striped">
+	
+	<tr>
+		<th>Booking ID </th>
+		<th>Date of Booking </th>
+		<th>Property </th>
+		<th>From </th>
+		<th>To </th>
+		<th>Guests</th>
+	</tr>
+<%=render @property.bookings%>
+
+</table>
+

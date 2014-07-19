@@ -1,0 +1,15 @@
+
+<div class="control-group">
+	<%= f.label :from ,"From", :class =>"control-label" %>
+<%= f.date_select :from,:class =>"controls" %>
+</div>
+<div class="control-group">
+	<%= f.label :to,"To", :class =>"control-label"  %>
+<%= f.date_select :to,:class =>"controls" %>
+</div>
+
+<div class="control-group">
+	<%= f.label :no_guest,"Guests", :class =>"control-label"  %>
+<%= f.select :no_guest,(1..15).to_a.push("16+"),:class =>"controls" %>
+</div>
+

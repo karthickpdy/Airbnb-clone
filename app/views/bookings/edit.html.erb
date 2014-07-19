@@ -1,0 +1,14 @@
+<h1>Editing booking</h1>
+
+<% form_for(@booking) do |f| %>
+  <%= f.error_messages %>
+<%=render :partial =>"formbook",:locals => {:f =>f}%>
+<%=f.hidden_field "property_id",:value => @propid%>
+
+  <p>
+    <%= f.submit 'Update' ,:class=> "btn btn-primary	"%>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @booking %> |
+<%= link_to 'Back', bookings_path %>

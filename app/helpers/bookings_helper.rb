@@ -1,0 +1,4 @@
+module BookingsHelper
+
+end
+

@@ -1,0 +1,34 @@
+<h1>Listing bookings</h1>
+	<%if !@bookings.empty?%>
+
+<table class="table table-striped">
+	<tr>
+		<th>Booking ID </th>
+		<th>Date of Booking </th>
+		<th>Property </th>
+		<th>From </th>
+		<th>To </th>
+		<th>Guests</th>
+	</tr>
+<%=render @bookings%>
+
+</table>
+
+<table>
+  <tr>
+  </tr>
+
+<% @bookings.each do |booking| %>
+  <tr>
+    <td><%= link_to 'Show', booking %></td>
+    <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
+    <td><%= link_to 'Destroy', booking, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%else%>
+<p>No Records Found</p>
+<%= link_to 'New booking', new_booking_path %>
+<%end%>

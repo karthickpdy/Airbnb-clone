@@ -1,0 +1,51 @@
+
+<div class="control-group">
+	<%= f.label :name ,"", :class =>"control-label" %>
+<%= f.text_field :name,:class =>"controls" %>
+</div>
+<div class="control-group">
+	<%= f.label :roomtype,"", :class =>"control-label"  %>
+<%= f.select :roomtype,get_room_types.map {|value| [value,value]},:class =>"controls" %>
+</div>
+
+<div class="control-group">
+	<%= f.label :housetype,"", :class =>"control-label"  %>
+<%= f.select :housetype,get_home_types.map {|value| [value,value]},:class =>"controls" %>
+</div>
+
+
+<div class="control-group">
+	<%= f.label :price,"", :class =>"control-label"  %>
+<%= f.text_field :price,:class =>"controls" %>
+</div>
+
+<div class="control-group">
+	<%= f.label :city,"", :class =>"control-label"  %>
+<%= f.text_field :city,:class =>"controls" %>
+</div>
+
+
+<div class="control-group">
+	<%= f.label :address,"", :class =>"control-label"  %>
+<%= f.text_field :address,:class =>"controls" %>
+</div>
+
+
+<div class="control-group">
+	<%= f.label :guest,"", :class =>"control-label"  %>
+<%= f.select :guest,(1..15).to_a.push("16+"),:class =>"controls" %>
+</div>
+
+
+<div class="control-group">
+	<%= f.label :avail_from,"", :class =>"control-label"  %>
+	<%= f.date_select :avail_from,:class =>"controls" %>
+</div>
+
+
+<div class="control-group">
+	<%= f.label :avail_to,"", :class =>"control-label"  %>
+<%= f.date_select :avail_to,:class =>"controls" %>
+</div>
+
+

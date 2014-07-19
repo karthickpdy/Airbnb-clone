@@ -1,0 +1,9 @@
+<tr>
+	<td><%=link_to booking.id,booking_url(booking.id)%></td>
+	<td><%=booking.created_at%></td>
+	<td><%=link_to Property.find(booking.property_id).name+" , "+Property.find(booking.property_id).city,property_url(:id=>booking.property_id)%></td>
+
+	<td><%=booking.from%></td>
+	<td><%=booking.to%></td>
+	<td><%=booking.no_guest%></td>
+</tr>

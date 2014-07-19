@@ -1,1 +1,33 @@
-<%= button_to "Sign Up", { :controller => "users", :action => "new" }, :method => :get ,:class => "btn btn-primary"%>
+
+ <video loop="loop" preload="auto" id="awesome" autoplay>
+      <!-- <source src="//a0.muscache.com/airbnb/static/Paris-P1-1.mp4" type='video/mp4'> -->
+      <source src="//a0.muscache.com/airbnb/static/Paris-P1-0.webm" type='video/webm'>
+    </video>
+
+<div class="trans">
+
+    <%if current_user%>
+ <form class="navbar-form navbar-left" role="search" action="/properties/search" method="GET">
+    <div class="input-group">
+        <input type="text" name="city"class=" form-control" placeholder="Search" style="margin-left:20px;" />
+          <select  name="guest" class="input-mini form-control">
+                                            <%(1..15).to_a.push("16+").each do |e|%>
+                                            <option value=<%=e.to_i%>><%=e.to_i%></option>
+                                            <%end%>
+                                     
+        <input type="date" name="from" class="input-medium form-control">
+        <input type="date" name="to" class="input-medium form-control">
+
+        <span class="input-group-btn">
+            <button class="btn btn-primary" type="submit">
+                Go!</button>
+        </span>
+    </div>
+</form>
+<%else%>
+</br>
+<p> Please Signup to explore the awesome locations and make your trip </p>
+<center><%= button_to "Sign Up", { :controller => "users", :action => "new" }, :method => :get ,:class => "btn-large btn-primary "%></center>
+<%end%>
+
+</div>

@@ -1,4 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :bookings
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -10,6 +13,10 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login',:controller => 'user_sessions',  :action => 'new'
   map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
   map.root :controller => 'pages', :action => 'index'
+  map.resources :properties, :collection => { :search => :get }
+
+  # map.resource :properties
+
   # Sample of named route:
   #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
   # This route can be invoked with purchase_url(:id => product.id)
